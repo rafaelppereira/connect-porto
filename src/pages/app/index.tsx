@@ -8,6 +8,7 @@ import { ships } from "../../services/ships";
 
 export default function App() {
   const [isMsg, setIsMsg] = useState([]);
+  const [tie, setTie] = useState(false);
   const totalNumberMsgs = isMsg.length;
 
   const wsUri = "wss://pcs-portohack.herokuapp.com/ws/dashboard-updates"
@@ -22,19 +23,36 @@ export default function App() {
 
     wsInstance.onmessage = (msg) => {
       const shipName = JSON.parse(msg.data);
-      const test = isMsg.map(item => {
-        if (shipName.data.ship) {
-          if (item.name === shipName.data.ship) {
-            item.status = shipName.eventType;
+      const eventType = JSON.parse(msg.data);
+
+      if (eventType.eventType === 'alerta') {
+        const test = isMsg.map(item => {
+          item.status = 'alerta';
+
+          return item;
+        });
+        
+        setTie(true);
+        setIsMsg(test);
+      } else {
+
+        const toggleSingle = isMsg.map(item => {
+          if (shipName.data.ship) {
+            if (item.name === shipName.data.ship) {
+              item.status = shipName.eventType;
+            }
+          } else {
+            toast.error('Náo conseguimos encontrar')
           }
-        } else {
-          toast.error('Náo conseguimos encontrar')
-        }
+  
+          return item;
+        });
 
-        return item;
-      });
+        setIsMsg(toggleSingle);
+      }
 
-      setIsMsg(test);
+
+
     }
 
     wsInstance.onerror = (err) => {
@@ -42,10 +60,10 @@ export default function App() {
     }
 
     wsInstance.onclose = () => {
-      console.log('desconnect to server')  
+      console.log('desconnect to server')
     }
   }
-
+  
   useEffect(() => {
     setIsMsg(ships)
   }, [])
@@ -57,7 +75,9 @@ export default function App() {
       </Head>    
       <section className="">
         <div className="w-full bg-gray-900 py-10">
-          <Temp />
+          <Temp
+            tie={tie}
+          />
           <div className="max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
             <Card
               key="d0b43292-cebd-422f-9098-e5f2447c362a"

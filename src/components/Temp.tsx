@@ -1,8 +1,8 @@
 interface TempProps {
-  temp?: string
+  tie?: boolean
 }
 
-export function Temp({ temp }: TempProps) {
+export function Temp({ tie }: TempProps) {
   return (
     <section className="max-w-5xl mx-auto px-8 flex flex-col md:flex-row items-center gap-4 h-auto md:h-24">
       <div className="bg-gray-800 p-4 w-full md:w-auto flex-1 h-full text-white flex items-center rounded-lg">
@@ -10,7 +10,15 @@ export function Temp({ temp }: TempProps) {
         <div className="ml-10">
           <h2 className="text-xl">Ventos de 23km/h</h2>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">Maré alta</span>
+            {tie ? (
+              <span className="text-red-500">
+                Maré baixa
+              </span>
+            ) : (
+              <span className="text-green-500">
+                Maré alta
+              </span>
+            )}
             <span className="text-blue-500">Umidade de 10%</span>
           </div>
         </div>

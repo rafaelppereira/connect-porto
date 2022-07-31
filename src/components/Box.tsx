@@ -17,7 +17,7 @@ export function Box ({ name, description, status }: BoxProps) {
    
   return (
     <div 
-      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500 bg-gray-900' : status === 'swell' ? 'bg-red-700' : status === 'alert' ? 'bg-red-700' : status === 'pratico_a_bordo' ? 'bg-green-500' : 'bg-blue-600' } `}
+      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500 bg-gray-900' : status === 'swell' ? 'bg-red-700' : status === 'alerta' ? 'bg-red-700' : status === 'pratico_a_bordo' ? 'bg-green-500' : 'bg-blue-600' } `}
     >
       <button 
         onClick={handleToggleBox}
@@ -29,13 +29,13 @@ export function Box ({ name, description, status }: BoxProps) {
           <CaretDown size={20} />
         )}
       </button>
-      <h1 className="text-lg">Návio - {name}</h1>
+      <h1 className="text-lg">Navio - {name}</h1>
 
       {openbox ? (
         <div className="mt-5 flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <span className="w-4 h-4 bg-green-500 flex rounded-full relative before:w-[1px] before:h-7 before:bg-green-500 before:top-4 before:left-1/2 before:absolute"></span>
-            <p className="text-sm">Návio chegou</p>
+            <p className="text-sm">Navio chegou</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ export function Box ({ name, description, status }: BoxProps) {
 
           <div className="flex items-center gap-2">
             <span className="w-4 h-4 bg-gray-700 flex rounded-full relative "></span>
-            <p className="text-sm">Návio está atracado</p>
+            <p className="text-sm">Navio está atracado</p>
           </div>
         </div>
         ) : (
