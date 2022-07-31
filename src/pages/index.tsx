@@ -15,58 +15,68 @@ export default function App() {
 
   const isBrowser = typeof window !== 'undefined';
   const [wsInstance] = useState(() => isBrowser ?  new WebSocket(wsUri) : null);
-  
-  if(wsInstance) {
-    wsInstance.onopen = () => {
-      console.log('connected to websocket instance');
-    }
-
-    wsInstance.onmessage = (msg) => {
-      const shipName = JSON.parse(msg.data);
-      const eventType = JSON.parse(msg.data);
-
-      if (eventType.eventType === 'alerta') {
-        const test = isMsg.map(item => {
-          item.status = 'alerta';
-
-          return item;
-        });
-        
-        setTie(true);
-        setIsMsg(test);
-      } else {
-
-        const toggleSingle = isMsg.map(item => {
-          if (shipName.data.ship) {
-            if (item.name === shipName.data.ship) {
-              item.status = shipName.eventType;
-            }
-          } else {
-            toast.error('Náo conseguimos encontrar')
-          }
-  
-          return item;
-        });
-
-        setIsMsg(toggleSingle);
+    
+    if(wsInstance) {
+      wsInstance.onopen = () => {
+        console.log('connected to websocket instance');
       }
-
-
-
-    }
-
-    wsInstance.onerror = (err) => {
-      console.log(err)
-    }
-
-    wsInstance.onclose = () => {
-      console.log('desconnect to server')
-    }
-  }
   
+      wsInstance.onmessage = (msg) => {
+        const shipName = JSON.parse(msg.data);
+        const eventType = JSON.parse(msg.data);
+  
+        if (eventType.eventType === 'alerta') {
+          const test = isMsg.map(item => {
+            item.status = 'alerta';
+  
+            return item;
+          });
+          
+          setTie(true);
+          setIsMsg(test);
+        } else {
+          const toggleSingle = isMsg.map(item => {
+            try {
+              if (shipName.data.ship) {
+                if (item.name === shipName.data.ship) {
+                  item.status = shipName.eventType;
+                }
+              } else {
+                toast.error('Náo conseguimos encontrar')
+              }
+            } catch (e) {
+              alert('Navio nao encontrado')
+            }
+            
+            return item;
+          });
+
+          setIsMsg(toggleSingle);
+        }
+      }
+  
+      wsInstance.onerror = (err) => {
+        console.log(err)
+      }
+  
+      wsInstance.onclose = () => {
+        console.log('desconnect to server')
+        setTimeout( wsInstance.onopen = () => {
+          console.log('connected to websocket instance');
+        }, 500);
+      }
+    }
+
   useEffect(() => {
     setIsMsg(ships)
-  }, [])
+  }, []);
+
+
+  const totalone = isMsg.filter(item => item.status === 'prontidao_aviso').length
+  const totaltwo = isMsg.filter(item => item.status === 'psp_liberada').length
+  const totalthree = isMsg.filter(item => item.status === 'pratico_a_bordo').length
+  const totalfor = isMsg.filter(item => item.status === 'swell').length
+
 
   return (
     <>
@@ -81,27 +91,27 @@ export default function App() {
           <div className="max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
             <Card
               key="d0b43292-cebd-422f-9098-e5f2447c362a"
-              result={20}
-              description="Návios aguardando a entrada"
+              result={totalone}
+              description="Navios com a prontidao aceita"
               status="open"
             />
             <Card
               key="af37542b-cd7f-42ae-a9e0-5e5f3d3c174b"
-              result={12}
-              description="Esperando a validação da documentação"
+              result={totaltwo}
+              description="Validação da documentação"
               status="blocked"
             />
             <Card
               key="b2566f5e-7edf-4bf1-a6e4-62e7ee0b676d"
-              result={35}
-              description="Liberados para entrada"
+              result={totalthree}
+              description="Navios com praticos a bordo"
               status="warning"
             />
             <Card
               key="5a9d60c4-9466-437c-9bcb-33c66fe40790"
-              result={92}
-              description="Bloqueados na entrada"
-              status="validation"
+              result={totalfor}
+              description="Navios com bloqueos por empresvistos"
+              status="warning"
             />
           </div>
         </div>
@@ -125,8 +135,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      mij
     </>
   )
 }

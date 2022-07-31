@@ -6,7 +6,7 @@ export function Header() {
           <img
            src="/logo.svg" 
            alt="Logo da connect porto"
-           className="w-44" 
+           className="w-64" 
           />
         </figure>
 
