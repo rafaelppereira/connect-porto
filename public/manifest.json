@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Qualivida Gest\u00e3o em Sa\u00fade",
+  "name": "Connect Porto",
   "short_name": "Qualivida",
-  "description": "Aplicativo para Desktop da Qualivida",
+  "description": "Aplicativo para Desktop do Connect Port",
   "icons": [
       {
           "src": "/icon-192x192.png",
