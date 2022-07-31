@@ -1,0 +1,31 @@
+{
+  "ships": {
+
+  },
+  "staticts": [
+    {
+      "id": "ae4e237b-e87e-4dd9-ac49-c2fcca46c599",
+      "result": 20,
+      "status": "open",
+      "description": "Návios aguardando a entrada"
+    },
+    {
+      "id": "51d6d08b-ee31-4c17-ad8c-98db13e92a89",
+      "result": 20,
+      "status": "blocked",
+      "description": "Esperando a validaçao da documentaçao"
+    },
+    {
+      "id": "8c18158a-4eac-4bcc-93e4-98a2f9848731",
+      "result": 20,
+      "status": "warning",
+      "description": "Liberados para entrada"
+    },
+    {
+      "id": "874c7535-46df-41c0-bb2d-815f4984e975",
+      "result": 20,
+      "status": "validation",
+      "description": "Bloqueados na entrada"
+    }
+  ]
+}
