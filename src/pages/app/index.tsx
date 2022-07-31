@@ -63,7 +63,7 @@ export default function App() {
             <Card
               key="af37542b-cd7f-42ae-a9e0-5e5f3d3c174b"
               result={12}
-              description="Esperando a validaçao da documentaçao"
+              description="Esperando a validação da documentação"
               status="blocked"
             />
             <Card

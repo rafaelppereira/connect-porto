@@ -1,7 +1,7 @@
 export const ships = [
   {
     id: 'cd8f1a4e-538e-4f6b-bed3-ff0b2e783716',
-    name: 'Polonia',
+    name: 'Arsos',
     description: 'Carga de carros',
     status: 'default'
   },
@@ -13,25 +13,25 @@ export const ships = [
   },
   {
     id: '42015c56-e9a8-44e1-97dd-046251b4e99f',
-    name: 'Irenes resolve',
+    name: 'Monte Tamaro',
     description: 'Carga de carros',
     status: 'default'
   },
   {
     id: '95746414-bff3-4a20-97d2-83d944f0e54b',
-    name: 'San fernando',
+    name: 'Nordamelia',
     description: 'Carga de carros',
     status: 'default'
   },
   {
     id: '4a9d508b-bf9a-40de-8225-9184624ed9a6',
-    name: 'San fernando',
+    name: 'Polonia',
     description: 'Carga de carros',
     status: 'default'
   },
   {
     id: '6c86cb56-f32b-44b4-b7bb-0fea502425d9',
-    name: 'Monte olivia',
+    name: 'San Fernando',
     description: 'Carga de carros',
     status: 'default'
   },

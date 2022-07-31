@@ -15,8 +15,8 @@ export function Header() {
             <span className="text-white text-md font-regular">U</span>
           </div> 
           <div className="text-white">
-            <h1 className="text-lg">Usuário anonimo</h1>
-            <p className="italic opacity-60">Imports World</p>
+            <h1 className="text-lg">Usuário anônimo</h1>
+            <p className="italic opacity-60">Instituto AmiGU</p>
           </div>
         </div>    
       </div>

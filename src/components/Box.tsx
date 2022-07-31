@@ -12,11 +12,12 @@ export function Box ({ name, description, status }: BoxProps) {
 
   const handleToggleBox = () => {
     setOpenBox(!openbox);
+    status = 'default';
   }
    
   return (
     <div 
-      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500' : status === 'swell' ? 'bg-red-700' : 'bg-blue-600' } `}
+      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500 bg-gray-900' : status === 'swell' ? 'bg-red-700' : status === 'alert' ? 'bg-red-700' : 'bg-blue-600' } `}
     >
       <button 
         onClick={handleToggleBox}
@@ -61,14 +62,14 @@ export function Box ({ name, description, status }: BoxProps) {
           <>
             <p className="my-5 opacity-60 font-light italic">{description}</p>
             <span 
-              className={`text-sm flex items-center gap-2 ${status === 'prontidao_aviso' && 'text-green-500'}`}
+              className={`text-sm flex items-center gap-2 ${status === 'prontidao_aviso' ? 'text-green-500' : status === 'swell' ? 'text-red-500' : status === 'prontidao_aceito' ? 'text-green-500' : ''}`}
             >
               {status === 'prontidao_aviso' ? (
                 <CheckCircle size={24} />
               ) : status === '' ? (
                 <Wind size={24} />
               ) : ''}
-              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidao' : 'd'}
+              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidão' : status === 'swell' ? 'Perigo eminente, ondas fortes!' : status === 'prontidao_aceito' ? 'Estado de prontidão aceito' : status === 'psp_liberada' ? 'Documentação liberada' : ''}
             </span>
           </>
       )}
