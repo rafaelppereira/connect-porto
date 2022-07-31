@@ -9,7 +9,7 @@ export function Temp({ tie }: TempProps) {
         <h1 className="text-5xl">23<span className="text-xl">c</span></h1>
         <div className="ml-10">
           <h2 className="text-xl">Ventos de 23km/h</h2>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row items-center gap-2">
             {tie ? (
               <span className="text-red-500">
                 Maré baixa

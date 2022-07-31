@@ -10,7 +10,7 @@ export function Header() {
           />
         </figure>
 
-        <div className="flex items-center gap-4">
+        <div className="items-center gap-4 hidden md:flex">
           <div className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center border-2 border-blue-500 shrink-0">
             <span className="text-white text-md font-regular">U</span>
           </div> 
