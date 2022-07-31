@@ -69,7 +69,7 @@ export function Box ({ name, description, status }: BoxProps) {
               ) : status === '' ? (
                 <Wind size={24} />
               ) : ''}
-              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidão' : status === 'swell' ? 'Perigo eminente, ondas fortes!' : status === 'prontidao_aceito' ? 'Estado de prontidão aceito' : status === 'psp_liberada' ? 'Documentação liberada' : status === 'pratico_a_bordo' ? 'Prático a bordo' : ''}
+              Status: {status === 'default' ? 'Padrão' : status === 'prontidao_aviso' ? 'Estado de prontidão' : status === 'swell' ? 'Perigo eminente, ondas fortes!' : status === 'prontidao_aceito' ? 'Estado de prontidão aceito' : status === 'psp_liberada' ? 'Documentação liberada' : status === 'pratico_a_bordo' ? 'Prático a bordo' : ''}
             </span>
           </>
       )}

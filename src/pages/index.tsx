@@ -92,7 +92,7 @@ export default function App() {
             <Card
               key="d0b43292-cebd-422f-9098-e5f2447c362a"
               result={totalone}
-              description="Navios com a prontidao aceita"
+              description="Navios com a prontidão aceita"
               status="open"
             />
             <Card
@@ -104,13 +104,13 @@ export default function App() {
             <Card
               key="b2566f5e-7edf-4bf1-a6e4-62e7ee0b676d"
               result={totalthree}
-              description="Navios com praticos a bordo"
+              description="Navios com práticos à bordo"
               status="warning"
             />
             <Card
               key="5a9d60c4-9466-437c-9bcb-33c66fe40790"
               result={totalfor}
-              description="Navios com bloqueos por empresvistos"
+              description="Navios com bloqueios por imprevistos"
               status="warning"
             />
           </div>
