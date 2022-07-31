@@ -1,17 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Box } from "../../components/Box";
 import { Card } from "../../components/Card";
 import { Temp } from "../../components/Temp";
 import { ships } from "../../services/ships";
-
-interface MsmProps {
-  eventType: string;
-  data: {
-    ship: string;
-  }
-}
-
 
 export default function App() {
   const [isMsg, setIsMsg] = useState([]);
@@ -24,20 +17,32 @@ export default function App() {
   
   if(wsInstance) {
     wsInstance.onopen = () => {
-      console.log('conectado')
+      console.log('connected to websocket instance');
     }
 
     wsInstance.onmessage = (msg) => {
       const shipName = JSON.parse(msg.data);
       const test = isMsg.map(item => {
-        if (item.name === shipName.data.ship) {
-          item.status = shipName.eventType;
+        if (shipName.data.ship) {
+          if (item.name === shipName.data.ship) {
+            item.status = shipName.eventType;
+          }
+        } else {
+          toast.error('Náo conseguimos encontrar')
         }
 
         return item;
       });
 
       setIsMsg(test);
+    }
+
+    wsInstance.onerror = (err) => {
+      console.log(err)
+    }
+
+    wsInstance.onclose = () => {
+      console.log('desconnect to server')  
     }
   }
 

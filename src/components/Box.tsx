@@ -17,7 +17,7 @@ export function Box ({ name, description, status }: BoxProps) {
    
   return (
     <div 
-      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500 bg-gray-900' : status === 'swell' ? 'bg-red-700' : status === 'alert' ? 'bg-red-700' : 'bg-blue-600' } `}
+      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500 bg-gray-900' : status === 'swell' ? 'bg-red-700' : status === 'alert' ? 'bg-red-700' : status === 'pratico_a_bordo' ? 'bg-green-500' : 'bg-blue-600' } `}
     >
       <button 
         onClick={handleToggleBox}
@@ -29,7 +29,7 @@ export function Box ({ name, description, status }: BoxProps) {
           <CaretDown size={20} />
         )}
       </button>
-      <h1 className="text-lg">Návio - {name} {status}</h1>
+      <h1 className="text-lg">Návio - {name}</h1>
 
       {openbox ? (
         <div className="mt-5 flex flex-col gap-4">
@@ -69,7 +69,7 @@ export function Box ({ name, description, status }: BoxProps) {
               ) : status === '' ? (
                 <Wind size={24} />
               ) : ''}
-              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidão' : status === 'swell' ? 'Perigo eminente, ondas fortes!' : status === 'prontidao_aceito' ? 'Estado de prontidão aceito' : status === 'psp_liberada' ? 'Documentação liberada' : ''}
+              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidão' : status === 'swell' ? 'Perigo eminente, ondas fortes!' : status === 'prontidao_aceito' ? 'Estado de prontidão aceito' : status === 'psp_liberada' ? 'Documentação liberada' : status === 'pratico_a_bordo' ? 'Prático a bordo' : ''}
             </span>
           </>
       )}
