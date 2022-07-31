@@ -18,13 +18,13 @@ export function Temp({ temp }: TempProps) {
       <div className="bg-gray-800 w-full md:w-auto flex flex-col md:flex-row py-4 items-center gap-4 px-6 h-full rounded-lg">
         <input 
           type="text"   
-          placeholder="30/07/2022"
+          placeholder="12:30hs"
           className="bg-gray-900 w-full md:w-auto text-gray-400 p-4 rounded-md outline-none border-2 border-gray-900 focus:border-blue-500 transition-colors"
         />
         <span className="text-white text-lg">Até</span>
         <input 
           type="text" 
-          placeholder="31/07/2022"
+          placeholder="14:30hs"
           className="bg-gray-900 w-full md:w-auto text-gray-400 p-4 rounded-md outline-none border-2 border-gray-900 focus:border-blue-500 transition-colors"
         />
       </div>

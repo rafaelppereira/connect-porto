@@ -5,14 +5,12 @@ export default function Home() {
 };
 
 export const getServerSide: GetServerSideProps = async () => {
-  const authenticated = true;
 
-  if (authenticated === true) {
-    return {
-      redirect: {
-        destination: '/app',
-        permanent: false,
-      }
+  return {
+    redirect: {
+      destination: '/app',
+      permanent: false,
     }
   }
+  
 }

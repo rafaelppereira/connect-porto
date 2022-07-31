@@ -1,10 +1,10 @@
-import { CaretDown, CaretUp } from "phosphor-react";
+import { CaretDown, CaretUp, CheckCircle, Wind } from "phosphor-react";
 import { useState } from "react";
 
 interface BoxProps {
   name: string;
   description: string;
-  status: number;
+  status: string;
 }
 
 export function Box ({ name, description, status }: BoxProps) {
@@ -16,7 +16,7 @@ export function Box ({ name, description, status }: BoxProps) {
    
   return (
     <div 
-      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === 0 ? 'border-orange-500' : status === 1 ? 'border-green-500' : '' } `}
+      className={`bg-gray-900 py-7 px-4 text-white rounded-lg relative border ${status === "default" ? 'border-gray-500' : status === 'swell' ? 'bg-red-700' : 'bg-blue-600' } `}
     >
       <button 
         onClick={handleToggleBox}
@@ -28,12 +28,12 @@ export function Box ({ name, description, status }: BoxProps) {
           <CaretDown size={20} />
         )}
       </button>
-      <h1 className="text-lg">Návio identificador - {name}</h1>
+      <h1 className="text-lg">Návio - {name} {status}</h1>
 
       {openbox ? (
         <div className="mt-5 flex flex-col gap-4">
           <div className="flex items-center gap-2">
-            <span className="w-4 h-4 bg-gray-700 flex rounded-full relative before:w-[1px] before:h-7 before:bg-gray-700 before:top-4 before:left-1/2 before:absolute"></span>
+            <span className="w-4 h-4 bg-green-500 flex rounded-full relative before:w-[1px] before:h-7 before:bg-green-500 before:top-4 before:left-1/2 before:absolute"></span>
             <p className="text-sm">Návio chegou</p>
           </div>
 
@@ -61,8 +61,15 @@ export function Box ({ name, description, status }: BoxProps) {
           <>
             <p className="my-5 opacity-60 font-light italic">{description}</p>
             <span 
-              className={`text-sm ${status === 0 ? 'text-orange-500' : status === 1 ? 'text-green-500' : ''}`}
-            >Status: {status === 0 ? 'Aviso de prontidao' : status === 1 ? 'Liberaçao do terminal' : ''}</span>
+              className={`text-sm flex items-center gap-2 ${status === 'prontidao_aviso' && 'text-green-500'}`}
+            >
+              {status === 'prontidao_aviso' ? (
+                <CheckCircle size={24} />
+              ) : status === '' ? (
+                <Wind size={24} />
+              ) : ''}
+              Status: {status === 'default' ? 'Padrao' : status === 'prontidao_aviso' ? 'Estado de prontidao' : 'd'}
+            </span>
           </>
       )}
     </div>

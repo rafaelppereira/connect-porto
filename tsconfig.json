@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/services/websocket.js"  ],
   "exclude": [
     "node_modules"
   ]
